@@ -1,11 +1,13 @@
 package ru.spec.java3.rmi;
 
 import java.util.Hashtable;
+import java.util.Scanner;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import ru.spec.java3.ejb.api.HHBean;
 import ru.spec.java3.ejb.api.MySingleton;
 import ru.spec.java3.ejb.api.Test;
 
@@ -17,7 +19,23 @@ public class Main {
 //		Hashtable<K, V>
 		
 		Context ctx = new InitialContext();
-		echo(ctx);
+		
+		HHBean hh = (HHBean) ctx.lookup("hh");
+		System.out.println("Enter user name:");
+		Scanner scanner = new Scanner(System.in);
+		long employeeId = hh.createEmployee(scanner.nextLine());
+		
+		System.out.println("user id = "+employeeId);
+		
+		for(;;){
+			System.out.println("Enter user id:");
+			String name = hh.getNameBy(scanner.nextLong());
+			System.out.println(name);
+		}
+		
+		
+//		echo(ctx);
+		
 //		MySingleton mySingleton = (MySingleton) ctx.lookup("MySingleton");
 //		mySingleton.test();
 	}

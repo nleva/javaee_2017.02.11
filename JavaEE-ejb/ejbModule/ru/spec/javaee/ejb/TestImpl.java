@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
@@ -29,6 +30,7 @@ public class TestImpl implements Test {
 	int count;
 	
 	@Inject
+//	@EJB
 	LoginBeanImpl loginBean;
 
 	@LogTime(value=11, date="world")
@@ -40,9 +42,9 @@ public class TestImpl implements Test {
 //	@Inject Event<Integer> bus;
 	
     @Override
-//    @Interceptors(ReverseString.class)
+//    @Interceptors({ReverseString.class,ReverseString.class})
 //    @ReverseString
-    @ReverseFirstArg
+//    @ReverseFirstArg
 	public String echo(@LogTime(date="qew") String msg){
     	count++;
 System.out.println(count+" : "+msg + " : "+Thread.currentThread().getName());

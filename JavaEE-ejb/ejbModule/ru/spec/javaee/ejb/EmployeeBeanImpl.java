@@ -22,10 +22,10 @@ public class EmployeeBeanImpl implements EmployeeBean, Serializable {
 	int age;
 	String name;
 	
-	@PostConstruct
-	@PreDestroy
-	@PrePassivate
-	@PostActivate
+//	@PostConstruct
+//	@PreDestroy
+//	@PrePassivate
+//	@PostActivate
 	void f(){
 		
 	}
